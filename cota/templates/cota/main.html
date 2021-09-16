@@ -1,29 +1,456 @@
+{% load static %}
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Student cota</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons-->
+
+    <link rel="shortcut icon" href="{% static '/images/icon.png' %}" type="image/x-icon" />
+
+    <title>Student Quota - Offers and Deals</title>
+
+    <!-- Bootstrap -->
+
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!--style-->
+
+    <link href="{% static '/css/normalize.css' %}" rel="stylesheet">
+
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+    <!-- Fancybox CSS -->
+
+    <link href="{% static '/fancybox/jquery.fancybox.css?v=2.1.4' %}" rel="stylesheet" />
+
+    <!--Font-Awesome-->
+
+    <link rel="stylesheet" href="{% static '/font-awesome/css/font-awesome.min.css' %}">
+
+    <!-- Flexslider CSS -->
+
+    <link href="{% static '/flexslider/flexslider.css' %}" rel="stylesheet" />
+
+    <!-- Owl Carousel Assets -->
+
+    <link href="{% static '/owl/owl.carousel.css' %}" rel="stylesheet">
+
+    <link href="{% static '/owl/owl.theme.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/owl/owl.transitions.css' %}">
+
+    <!--google fonts-->
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800|Playfair+Display:400,900"
+        rel="stylesheet">
+
+    <!--[if lt IE 9]>
+
+    <script src="assets/js/html5shiv.min.js"></script>
+
+    <script src="assets/js/respond.min.js"></script>
+
+    <![endif]-->
+
 </head>
 
 <body>
-    <H1>Navbar</H1>
-    <hr>
+    <!-- navigationBar -->
+    <div class="navigationBar">
+        <div class="topHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <a href="index.html" class="logo"><img src="{% static '/images/logo.png' %}" alt="" /></a>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="locationDiv searchbox">
+                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                                <option>Select Location</option>
+                                <option>Beed</option>
+                                <option>Aurangabad</option>
+                                <option>Pune</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="searchbox">
+                            <input type="text" placeholder="Search for...">
+                            <button><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="navigationBarContent">
+            <div class="container">
+                <nav role="navigation" class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" data-target="#navbarCollapse" data-toggle="collapse"
+                            class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'top_deals' %}">Top Deals</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Fashion
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Clothing</a></li>
+                                    <li><a href="#">FootWears </a></li>
+                                    <li><a href="#">Watches & Jewelry</a></li>
+                                    <li><a href="#">Accessories </a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Electronic
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Entertainment </a></li>
+                                    <li><a href="#">Communication </a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Beauty
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Salons </a></li>
+                                    <li><a href="#">Beauty Parlors </a></li>
+                                    <li><a href="#">Beauty Products </a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Health & Fitness
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Hospitals </a></li>
+                                    <li><a href="#">Gyms </a></li>
+                                    <li><a href="#">Sports Club</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Bus </a></li>
+                                    <li><a href="#">Train </a></li>
+                                    <li><a href="#">Plain</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Food & Drinks
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Restaurants </a></li>
+                                    <li><a href="#">Supermarkets </a></li>
+                                    <li><a href="#">Juice Centers</a></li>
+                                    <li><a href="#">Tea & Coffee</a></li>
+                                    <li><a href="#">Breakfast Centers </a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#">News</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- navigationBarContent -->
+        </div>
+    </div>
+    <!-- End of navigationBar -->
 
     {% block content %}
-
     {% endblock content %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
+    <!-- bannerSection -->
+
+    <div class="bannerSection">
+
+        <div class="bannerContainer">
+
+            <div id="banner-slider" class="owl-carousel bannerSlider">
+
+                <div class="item">
+
+                    <div class="replaceImg" style="background-image: url({% static 'images/slide1.jpg' %})">
+
+                        <div class="bannerCaption">
+
+                            <h1>Welcome to Students Quota</h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+
+                    <div class="replaceImg" style="background-image: url({% static 'images/slide2.jpg' %})">
+
+                        <div class="bannerCaption">
+
+                            <h1>Discount for Students</h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+
+                    <div class="replaceImg" style="background-image: url({% static 'images/slide3.jpg' %})">
+
+                        <div class="bannerCaption">
+
+                            <h1>Wedding & PartyWear</h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="down-arrow-box">
+
+            <a href="#intro">
+
+                <span><i class="fa fa-angle-down"></i></span>
+
+            </a>
+
+        </div>
+
+    </div><!-- End of bannerSection -->
+
+    <!-- Product Section -->
+    <div id="intro" class="productSection">
+        <div class="container">
+            <h2 class="heading-center"><span>Top<strong>Offers</strong></span></h2>
+            <div class="row productCol">
+                <div class="col-md-6">
+                    <div class="ProductBlock">
+                        <a href="#" class="ProductImageBlock">
+                            <div style="background-image: url('assets/images/product2.jpg') no-repeat;"></div>
+                        </a>
+                        <div class="ProductDiscBlock">
+                            <div class="productBlockInfo">
+                                <h3 class="protitle">20% Students Discount on Watches</h3>
+                                <p class="proinfo">All Brands Available</p>
+                                <h4 class="propricing">Samrat Watch Center </h4>
+                            </div>
+                            <div class="productBlockViewDtl">
+                                <a href="#" class="btn1">View details <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#" class="btn2">Get Offer <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- testimonialSection -->
+    <div class="testimonialSection">
+        <div class="container">
+            <h2 class="text-center">Students Testimonials</h2>
+
+            <div class="col-md-offset-2 col-md-8">
+                <div class="owl-carousel" id="testimonialSlider">
+                    <div class="item">
+                        <div class="clientTestimonialBlock">
+                            <div>
+                                <i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Autem consequuntur natus ab repellendus optio consectetur, praesentium
+                                delectus.
+                                <i class="fa fa-quote-right"></i>
+                            </div>
+                            <strong> Swati Jadhav </strong>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="clientTestimonialBlock">
+                            <div>
+                                <i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Autem consequuntur natus ab repellendus optio consectetur, praesentium
+                                delectus.
+                                <i class="fa fa-quote-right"></i>
+                            </div>
+                            <strong>Ritu </strong>
+                            <span> </span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="clientTestimonialBlock">
+                            <div>
+                                <i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Autem consequuntur natus ab repellendus optio consectetur, praesentium
+                                delectus.
+                                <i class="fa fa-quote-right"></i>
+                            </div>
+                            <strong> Abhishekh Naik </strong>
+                            <span></span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer  -->
+
+    <div class="footer-top-area">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-4">
+
+                    <div class="footer-about-us">
+
+                        <h2 class="footer-wid-title">About Student Quota</h2>
+
+                        <p>StudentQuota is subdivision of Warriortech Consulting (OPC) Pvt. Ltd</p>
+
+                        <div class="footer-social">
+
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+
+                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+                            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="footer-menu">
+
+                        <h2 class="footer-wid-title">User Navigation </h2>
+
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Carriers</a></li>
+                            <li><a href="#">Terms & Conditions </a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-menu">
+
+                        <h2 class="footer-wid-title">Address </h2>
+                        <p><i class="fa fa-map-marker"></i> Shop No.1, Surveen Towers, Dashmesh Nagar Road,
+                            Osmanpura,
+                            Aurangabad-Maharashtra - 431005, Opp. Tapadiya School (Map)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="col-md-12">
+
+                <div class="copyright">
+
+                    <p>© Copyright 2021 - <strong>Student Quota</strong> | Designed &amp; Developed by
+                        <a href="https://www.invictuswebsolutions.com" target="_blank"> <span><img
+                                    src="{% static '/images/copyrightlogo.png' %}"></span>
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div> <!-- End of footer -->
+
+    <!-- Button trigger modal -->
+
+
+
+    <!--Scroll to top-->
+
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+
+    <!-- jQuery-->
+
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery -->
+
+    <script type="text/javascript" src="{% static '/js/modernizr.custom.js' %}"></script>
+
+    <!-- Fancybox jQuery -->
+
+    <script src="{% static '/fancybox/jquery.mousewheel-3.0.6.pack.js' %}"></script>
+
+    <script src="{% static '/fancybox/jquery.fancybox.js?v=2.1.4' %}"></script>
+
+    <!-- FlexSlider -->
+
+    <script defer src="{% static '/flexslider/jquery.flexslider.js' %}"></script>
+    <script type="text/javascript" src="{% static '/owl/owl.carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery.transit.min.js' %}"></script>
+    <script src="{% static '/js/jquery.js' %}"></script>
+
 </body>
 
 </html>
